@@ -25,19 +25,19 @@ function App() {
       <StudentReg/>
       {/* <StundentForm/> */}
 
-      {/* //Experiment 07 */}
-      {/*  <h1>Student Information System</h1>
+      {/* Experiment 07 
+       <h1>Student Information System</h1>
       <div className="student-container">
         <StudentCard name="Monika" course="B.Tech Data Science" marks="95" />
         <StudentCard name="Rahul" course="B.Tech CS" marks="88" />
         <StudentCard name="Sneha" course="B.Tech IT" marks="92" />
       </div> */}
 
-      {/* Experiment 08 */}
-      {/* <Count/> */}
+      {/* Experiment 08 
+      <Count/> */}
 
-      {/* Experiment 09 */}
-      {/* <RegistrationForm/> */}
+      {/* Experiment 09 
+      <RegistrationForm/> */}
     </>
   );
 }
