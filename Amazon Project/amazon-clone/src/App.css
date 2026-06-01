@@ -152,7 +152,97 @@ footer {
 .logo span {
   color: orange;
   font-size: 20px;
+  
 }
 .rating {
   color: #ff9900;
+}
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  background: #febd69;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.quantity-controls span {
+  font-size: 24px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+.categories a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.categories a:hover {
+  text-decoration: underline;
+}
+.categories a:hover {
+  background: rgba(255,255,255,0.15);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.categories button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.categories button:hover {
+  text-decoration: underline;
+}
+.profile-section {
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+
+  background: white;
+  color: black;
+
+  min-width: 250px;
+
+  border-radius: 8px;
+  padding: 8px 0;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  z-index: 1000;
+}
+
+.profile-dropdown p {
+  margin: 0;
+  padding: 10px 15px;
+  white-space: nowrap;
+}
+
+.profile-dropdown p:hover {
+  background: #f3f3f3;
+  cursor: pointer;
+}
+.cart-panel {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }

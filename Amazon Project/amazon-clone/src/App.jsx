@@ -1,17 +1,58 @@
 import "./App.css";
+import { useState } from "react";
 
 import Navbar from "./components/Navbar";
 import Categories from "./components/Categories";
 import ProductCard from "./components/ProductCard";
 
 import products from "./data/products";
-
 function App() {
+
+  const [cartCount, setCartCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showCart, setShowCart] = useState(false);
+
+
+  const addToCart = (product) => {
+  setCartCount(prev => prev + 1);
+
+  setCartItems(prev => [
+    ...prev,
+    product.title
+  ]);
+};
+
+const removeFromCart = (product) => {
+
+  setCartCount(prev => Math.max(0, prev - 1));
+
+  setCartItems(prev => {
+    const index = prev.lastIndexOf(product.title);
+
+    if (index === -1) return prev;
+
+    return prev.filter((_, i) => i !== index);
+  });
+
+};
+
   return (
     <>
-      <Navbar />
+   <Navbar
+  cartCount={cartCount}
+  cartItems={cartItems}
+  setSelectedCategory={setSelectedCategory}
+  searchTerm={searchTerm}
+  setSearchTerm={setSearchTerm}
+  showCart={showCart}
+  setShowCart={setShowCart}
+/>
 
-      <Categories />
+      <Categories
+  setSelectedCategory={setSelectedCategory}
+/>
 
       <img
         className="banner"
@@ -20,11 +61,22 @@ function App() {
       />
 
       <div className="products">
-        {products.map((product) => (
+      {products
+     .filter(
+       (product) =>
+         (selectedCategory === "all" ||
+          product.category === selectedCategory) &&
+           product.title
+           .toLowerCase()
+           .includes(searchTerm.toLowerCase())
+           )
+        .map((product) => (
           <ProductCard
-            key={product.id}
-            product={product}
-          />
+        key={product.id}
+        product={product}
+        addToCart={addToCart}
+       removeFromCart={removeFromCart}
+/>
         ))}
       </div>
 

@@ -1,18 +1,31 @@
-function Categories() {
+function Categories({ setSelectedCategory }) {
   return (
     <div className="categories">
-      <p>☰ All</p>
-      <p>Today's Deals</p>
-      <p>Mobiles</p>
-      <p>Fashion</p>
-      <p>Electronics</p>
-      <p>Home</p>
-      <p>Books</p>
-      <p>Prime</p>
-      <p>Customer Service</p>
-      <p>Gift Cards</p>
-      <p>Sell</p>
-    </div>
+
+      <button onClick={() => setSelectedCategory("all")}>
+        ☰ All
+      </button>
+
+      <button onClick={() => setSelectedCategory("mobiles")}>
+        Mobiles
+      </button>
+
+      <button onClick={() => setSelectedCategory("fashion")}>
+        Fashion
+      </button>
+
+      <button onClick={() => setSelectedCategory("electronics")}>
+        Electronics
+      </button>
+
+      <button onClick={() => setSelectedCategory("kitchen")}>
+        Kitchen
+      </button>
+
+      <button onClick={() => setSelectedCategory("appliances")}>
+        Appliances
+      </button>
+   </div>
   );
 }
 

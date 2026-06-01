@@ -1,11 +1,26 @@
-function Navbar() {
+import { useState } from "react";
+function Navbar({
+  cartCount,
+  cartItems,
+  setSelectedCategory,
+  searchTerm,
+  setSearchTerm,
+  showCart,
+  setShowCart
+}) {
+  const [showProfile, setShowProfile] = useState(false);
+  const [showOrders, setShowOrders] = useState(false);
   return (
     <nav className="navbar">
  <div className="logo-section">
 
-  <div className="logo">
-      amazon<span>.in</span>
-  </div>
+ <div
+  className="logo"
+  onClick={() => setSelectedCategory("all")}
+  
+>
+  amazon<span>.in</span>
+</div>
 
   <div className="location">
   <span className="deliver">
@@ -27,16 +42,98 @@ function Navbar() {
   <input
     type="text"
     placeholder="Search Amazon.in"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
   />
 
   <button>🔍</button>
 
 </div>
       <div className="nav-links">
-        <p>Hello, Ishita</p>
-        <p>Returns & Orders</p>
-        <h3>🛒 Cart</h3>
-      </div>
+       <div className="profile-section">
+
+  <p
+    onClick={() => setShowProfile(!showProfile)}
+    style={{ cursor: "pointer" }}
+  >
+    Hello, Ishita ▼
+  </p>
+
+  {showProfile && (
+
+    <div className="profile-dropdown">
+
+      <p>My Profile</p>
+
+      <p>My Orders</p>
+
+      <p>Settings</p>
+
+    </div>
+
+  )}
+
+</div>
+        <div className="profile-section">
+
+  <p
+    onClick={() => setShowOrders(!showOrders)}
+    style={{ cursor: "pointer" }}
+  >
+    Returns & Orders ▼
+  </p>
+
+  {showOrders && (
+
+    <div className="profile-dropdown">
+
+      <p>✓ iPhone 15</p>
+      <p>Delivered May 25</p>
+
+      <p>✓ Running Shoes</p>
+      <p>Delivered May 20</p>
+
+      <p>✓ Headphones</p>
+      <p>Delivered May 15</p>
+
+    </div>
+
+  )}
+
+</div>
+       <div className="profile-section">
+
+  <h3
+    onClick={() => setShowCart(!showCart)}
+    style={{ cursor: "pointer" }}
+  >
+    🛒 Cart ({cartCount})
+  </h3>
+
+{showCart && (
+
+  <div className="profile-dropdown">
+
+    <p><strong>Your Cart</strong></p>
+{Object.entries(
+  cartItems.reduce((acc, item) => {
+    acc[item] = (acc[item] || 0) + 1;
+    return acc;
+  }, {})
+).map(([item, count]) => (
+  <p key={item}>
+    {item} × {count}
+  </p>
+))}
+
+    <p><strong>Total Items: {cartCount}</strong></p>
+
+  </div>
+
+)}
+
+</div>
+ </div>
 
     </nav>
   );
