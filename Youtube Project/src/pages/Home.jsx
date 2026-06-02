@@ -1,10 +1,20 @@
 import videos from "../data/videos";
 import VideoCard from "../components/VideoCard";
 
-function Home({ search }) {
-  const filteredVideos = videos.filter((video) =>
-    video.title.toLowerCase().includes(search.toLowerCase())
-  );
+function Home({
+  search,
+  selectedCategory
+}) {
+      const filteredVideos = videos.filter(
+  (video) =>
+    video.title
+      .toLowerCase()
+      .includes(search.toLowerCase()) &&
+    (
+      selectedCategory === "all" ||
+      video.category.toLowerCase() === selectedCategory
+    )
+);
 return (
   <>
     {filteredVideos.length === 0 ? (

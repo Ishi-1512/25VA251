@@ -9,22 +9,34 @@ import VideoPlayer from "./pages/VideoPlayer";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
+     <div className={darkMode ? "dark-mode" : ""}>
     <BrowserRouter>
       <Navbar
         search={search}
         setSearch={setSearch}
+        setSelectedCategory={setSelectedCategory}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
 
       <div className="layout">
-        <Sidebar />
+     <Sidebar
+        setSelectedCategory={setSelectedCategory}
+        selectedCategory={selectedCategory}
+      />
 
         <Routes>
           <Route
             path="/"
             element={
-              <Home search={search} />
+              <Home
+              search={search}
+              selectedCategory={selectedCategory}
+              />
             }
           />
 
@@ -38,6 +50,7 @@ function App() {
           © 2025 YouTube Clone • Made by Ishita
        </footer>
     </BrowserRouter>
+    </div>
   );
 }
 
